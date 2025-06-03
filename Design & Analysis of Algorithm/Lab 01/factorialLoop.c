@@ -10,5 +10,5 @@ void main()
         ans *= i;
     }
 
-    printf("%d",ans);
+    printf("%d", ans);
 }

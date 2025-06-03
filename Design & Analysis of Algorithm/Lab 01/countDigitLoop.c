@@ -12,6 +12,5 @@ void main()
         n /= 10;
         count++;
     }
-    printf("No of digit in number is %d" , count);
-    
+    printf("No of digit in number is %d", count);
 }
