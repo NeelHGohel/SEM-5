@@ -1,5 +1,6 @@
-import 'package:adv_flutter_labs/lab_02/mvc_1/controller.dart';
 import 'package:flutter/material.dart';
+
+import 'controller.dart';
 
 class DisplayUser extends StatefulWidget {
 

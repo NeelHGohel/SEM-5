@@ -1,4 +1,5 @@
-import 'package:adv_flutter_labs/lab_02/mvc_1/model.dart';
+
+import 'model.dart';
 
 class Controller {
 
