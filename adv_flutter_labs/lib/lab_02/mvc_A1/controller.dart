@@ -11,5 +11,5 @@ class Controller {
 
   List<dynamic> getUserList() => model.getUserInList();
 
-  void toggleFav(user,index) => model.toggleFav(user,index);
+  void toggleFav(user, index) => model.toggleFav(user, index);
 }

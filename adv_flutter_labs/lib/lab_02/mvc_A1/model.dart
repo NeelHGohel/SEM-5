@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:adv_flutter_labs/lab_02/mvc_A1/const.dart';
 
 class Lab2_A1 {
   List<dynamic> userList = [];
@@ -7,8 +7,9 @@ class Lab2_A1 {
     userList.add(user);
   }
 
-  void editUserInList(index, user) {
+  void editUserInList(int index,Map<dynamic, dynamic> user, ) {
     userList[index] = user;
+    // print(userList);
   }
 
   void deleteUserInList(index) {
@@ -16,12 +17,12 @@ class Lab2_A1 {
   }
 
   List<dynamic> getUserInList() {
-    print(userList);
+    // print(userList);
     return userList;
   }
 
-  void toggleFav(user,index) {
-    user['isFav'] = !user['isFav'];
+  void toggleFav(user, index) {
+    user[IS_FAV] = !user[IS_FAV];
     userList[index] = user;
   }
 }

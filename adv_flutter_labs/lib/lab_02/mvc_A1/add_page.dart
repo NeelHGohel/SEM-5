@@ -1,20 +1,36 @@
+import 'package:adv_flutter_labs/lab_02/mvc_A1/const.dart';
 import 'package:adv_flutter_labs/lab_02/mvc_A1/view.dart';
 import 'package:flutter/material.dart';
 
-class AddPage extends StatelessWidget {
-  dynamic user;
-   AddPage({super.key, this.user}){
-    if(user!=null){
-      nameController.text = user['Name'];
-      rollController.text = user['roll'];
-    }
-   }
-  TextEditingController nameController = TextEditingController();
-  TextEditingController rollController = TextEditingController();
+class AddPage extends StatefulWidget {
+  final dynamic user;
+  const AddPage({super.key, this.user});
+
+  @override
+  State<AddPage> createState() => _AddPageState();
+}
+
+class _AddPageState extends State<AddPage> {
+  late TextEditingController nameController;
+  late TextEditingController rollController;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(
+      text: widget.user != null ? widget.user[NAME] : '',
+    );
+    rollController = TextEditingController(
+      text: widget.user != null ? widget.user[ROLL] : '',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isEdit = widget.user != null;
+
     return Scaffold(
-      appBar: AppBar(title: Text("Add User In List")),
+      appBar: AppBar(title: Text(isEdit ? "Edit User" : "Add User")),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -30,13 +46,10 @@ class AddPage extends StatelessWidget {
                 ),
               ),
             ),
-
-
-
             SizedBox(height: 10),
-
             TextFormField(
               controller: rollController,
+              keyboardType: TextInputType.numberWithOptions(),
               decoration: InputDecoration(
                 labelText: 'Roll Number',
                 hintText: 'Enter your Roll Number',
@@ -46,21 +59,25 @@ class AddPage extends StatelessWidget {
                 ),
               ),
             ),
-
-
-
             SizedBox(height: 10),
-
             ElevatedButton(
               onPressed: () {
-                Map<String, dynamic> user = {};
-                user['Name'] = nameController.text.toString();
-                user['roll'] = rollController.text.toString();
-                DisplayUser.controller.addUserList(user);
+                if (widget.user != null) {
+                  int index = DisplayUser.controller.getUserList().indexOf(widget.user);
+                  widget.user[NAME] = nameController.text.toString();
+                  widget.user[ROLL] = rollController.text.toString();
+                  widget.user[IS_FAV] = widget.user[IS_FAV] ?? false;
+                  DisplayUser.controller.editUserList(index, widget.user);
+                } else {
+                  Map<dynamic, dynamic> newuser = {};
+                  newuser[NAME] = nameController.text.toString();
+                  newuser[ROLL] = rollController.text.toString();
+                  newuser[IS_FAV] = false;
+                  DisplayUser.controller.addUserList(newuser);
+                }
                 Navigator.pop(context);
               },
-
-              child: Text("Add"),
+              child: Text(isEdit ? "Update" : "Add"),
             ),
           ],
         ),

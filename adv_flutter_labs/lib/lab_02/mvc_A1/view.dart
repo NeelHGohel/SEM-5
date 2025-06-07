@@ -2,6 +2,7 @@ import 'package:adv_flutter_labs/lab_02/mvc_A1/add_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'const.dart';
 import 'controller.dart';
 
 class DisplayUser extends StatefulWidget {
@@ -43,34 +44,39 @@ class _DisplayUserState extends State<DisplayUser> {
           ? ListView.builder(
               itemCount: DisplayUser.controller.getUserList().length,
               itemBuilder: (context, index) {
-                // bool isFav = DisplayUser.controller.getUserList()[index]['isFav'];
+                dynamic user = DisplayUser.controller.getUserList()[index];
+                bool isFav = user[IS_FAV] ?? false;
                 return ListTile(
                   title: Text(
-                    "Name : ${DisplayUser.controller.getUserList()[index]['Name']}",
+                    "Name : ${user[NAME]}",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    "Roll No. ${DisplayUser.controller.getUserList()[index]['roll']}",
+                    "Roll No. ${user[ROLL]}",
                   ),
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return AddPage(
-                            user: DisplayUser.controller.getUserList()[index],
-                          );
-                        },
-                      ),
-                    );
+                    Navigator.of(context)
+                        .push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return AddPage(
+                                user: DisplayUser.controller
+                                    .getUserList()[index],
+                              );
+                            },
+                          ),
+                        )
+                        .then((value) {
+                          setState(() {});
+                        });
                   },
 
                   leading: IconButton(
                     onPressed: () {
-                      // DisplayUser.controller.toggleFav(user, index);
-                      // setState(() {});
+                      DisplayUser.controller.toggleFav(user, index);
+                      setState(() {});
                     },
-                    icon: Icon(Icons.favorite_border, color: Colors.red),
-                    // : Icon(Icons.favorite_border),
+                    icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
                   ),
                   trailing: IconButton(
                     onPressed: () {
