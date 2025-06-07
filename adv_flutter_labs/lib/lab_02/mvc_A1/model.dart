@@ -20,5 +20,8 @@ class Lab2_A1 {
     return userList;
   }
 
-  void toggleFav() {}
+  void toggleFav(user,index) {
+    user['isFav'] = !user['isFav'];
+    userList[index] = user;
+  }
 }

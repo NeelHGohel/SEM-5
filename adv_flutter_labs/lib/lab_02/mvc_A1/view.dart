@@ -1,10 +1,11 @@
 import 'package:adv_flutter_labs/lab_02/mvc_A1/add_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'controller.dart';
 
 class DisplayUser extends StatefulWidget {
-  const DisplayUser({super.key});
+  DisplayUser({super.key});
   static Controller controller = Controller();
 
   @override
@@ -42,13 +43,58 @@ class _DisplayUserState extends State<DisplayUser> {
           ? ListView.builder(
               itemCount: DisplayUser.controller.getUserList().length,
               itemBuilder: (context, index) {
+                // bool isFav = DisplayUser.controller.getUserList()[index]['isFav'];
                 return ListTile(
                   title: Text(
-                    DisplayUser.controller.getUserList()[index]['Name'],
+                    "Name : ${DisplayUser.controller.getUserList()[index]['Name']}",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    "Roll No. ${DisplayUser.controller.getUserList()[index]['roll']}",
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return AddPage(
+                            user: DisplayUser.controller.getUserList()[index],
+                          );
+                        },
+                      ),
+                    );
+                  },
+
+                  leading: IconButton(
+                    onPressed: () {
+                      // DisplayUser.controller.toggleFav(user, index);
+                      // setState(() {});
+                    },
+                    icon: Icon(Icons.favorite_border, color: Colors.red),
+                    // : Icon(Icons.favorite_border),
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.favorite),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoAlertDialog(
+                            title: Text("are you sure ?"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  DisplayUser.controller.deleteUserList(index);
+                                  Navigator.pop(context);
+                                  setState(() {});
+                                },
+                                child: Text("delete"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    icon: Icon(Icons.delete),
+                    color: Colors.red,
                   ),
                 );
               },
