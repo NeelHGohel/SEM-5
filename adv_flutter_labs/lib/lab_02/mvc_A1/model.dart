@@ -1,6 +1,24 @@
-class Lab2_A1 {
-  String name;
-  int roll;
+import 'package:flutter/cupertino.dart';
 
-  Lab2_A1({required this.name ,required this.roll});
+class Lab2_A1 {
+  List<dynamic> userList = [];
+
+  void addUserInList(dynamic user) {
+    userList.add(user);
+  }
+
+  void editUserInList(index, user) {
+    userList[index] = user;
+  }
+
+  void deleteUserInList(index) {
+    userList.removeAt(index);
+  }
+
+  List<dynamic> getUserInList() {
+    print(userList);
+    return userList;
+  }
+
+  void toggleFav() {}
 }
