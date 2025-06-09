@@ -1,6 +1,8 @@
+import 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_view.dart';
 import 'package:flutter/material.dart';
 
 import 'lab_02/mvc_A1/view.dart';
+import 'lab_02/mvc_profile_card/card_view.dart';
 import 'lab_02/mvc_signup/signup_view.dart';
 
 void main() {
@@ -16,10 +18,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: SignupView(),
+
+      // home: DisplayUser(),
+      // home: CardView(),
+      // home: SignupView(),
+      home: CRUDView(),
     );
   }
 }

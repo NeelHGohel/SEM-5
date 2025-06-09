@@ -12,4 +12,6 @@ const String CONFIRM_PASSWORD = 'confirmPassword';
 
 //region SIGN_UP_BUTTON
 const String BTN_CONFIRM_SIGN_UP_NAME = "Confirm";
+const String BTN_RESET_SIGN_UP_NAME = "Reset";
+
 //endregion

@@ -24,15 +24,15 @@ class _DisplayUserState extends State<DisplayUser> {
             onPressed: () {
               Navigator.of(context)
                   .push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return AddPage();
-                      },
-                    ),
-                  )
+                MaterialPageRoute(
+                  builder: (context) {
+                    return AddPage();
+                  },
+                ),
+              )
                   .then((value) {
-                    setState(() {});
-                  });
+                setState(() {});
+              });
             },
 
             icon: Icon(Icons.add),
@@ -42,69 +42,69 @@ class _DisplayUserState extends State<DisplayUser> {
 
       body: DisplayUser.controller.getUserList().isNotEmpty
           ? ListView.builder(
-              itemCount: DisplayUser.controller.getUserList().length,
-              itemBuilder: (context, index) {
-                dynamic user = DisplayUser.controller.getUserList()[index];
-                bool isFav = user[IS_FAV] ?? false;
-                return ListTile(
-                  title: Text(
-                    "Name : ${user[NAME]}",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    "Roll No. ${user[ROLL]}",
-                  ),
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return AddPage(
-                                user: DisplayUser.controller
-                                    .getUserList()[index],
-                              );
-                            },
-                          ),
-                        )
-                        .then((value) {
-                          setState(() {});
-                        });
+        itemCount: DisplayUser.controller.getUserList().length,
+        itemBuilder: (context, index) {
+          dynamic user = DisplayUser.controller.getUserList()[index];
+          bool isFav = user[IS_FAV] ?? false;
+          return ListTile(
+            title: Text(
+              "Name : ${user[NAME]}",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              "Roll No. ${user[ROLL]}",
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return AddPage(
+                      user: DisplayUser.controller
+                          .getUserList()[index],
+                    );
                   },
+                ),
+              )
+                  .then((value) {
+                setState(() {});
+              });
+            },
 
-                  leading: IconButton(
-                    onPressed: () {
-                      DisplayUser.controller.toggleFav(user, index);
-                      setState(() {});
-                    },
-                    icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return CupertinoAlertDialog(
-                            title: Text("are you sure ?"),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  DisplayUser.controller.deleteUserList(index);
-                                  Navigator.pop(context);
-                                  setState(() {});
-                                },
-                                child: Text("delete"),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    icon: Icon(Icons.delete),
-                    color: Colors.red,
-                  ),
+            leading: IconButton(
+              onPressed: () {
+                DisplayUser.controller.toggleFav(user, index);
+                setState(() {});
+              },
+              icon: Icon(isFav ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
+            ),
+            trailing: IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return CupertinoAlertDialog(
+                      title: Text("are you sure ?"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            DisplayUser.controller.deleteUserList(index);
+                            Navigator.pop(context);
+                            setState(() {});
+                          },
+                          child: Text("delete"),
+                        ),
+                      ],
+                    );
+                  },
                 );
               },
-            )
+              icon: Icon(Icons.delete),
+              color: Colors.red,
+            ),
+          );
+        },
+      )
           : Center(child: Text("No User Found")),
     );
   }
