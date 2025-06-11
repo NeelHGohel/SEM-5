@@ -1,6 +1,4 @@
-import 'package:adv_flutter_labs/lab_02/mvc_A1/const.dart';
-import 'package:adv_flutter_labs/lab_02/mvc_A1/view.dart';
-import 'package:flutter/material.dart';
+import '../../utils/import_export.dart';
 
 class AddPage extends StatefulWidget {
   final dynamic user;
@@ -63,7 +61,9 @@ class _AddPageState extends State<AddPage> {
             ElevatedButton(
               onPressed: () {
                 if (widget.user != null) {
-                  int index = DisplayUser.controller.getUserList().indexOf(widget.user);
+                  int index = DisplayUser.controller.getUserList().indexOf(
+                    widget.user,
+                  );
                   widget.user[NAME] = nameController.text.toString();
                   widget.user[ROLL] = rollController.text.toString();
                   widget.user[IS_FAV] = widget.user[IS_FAV] ?? false;

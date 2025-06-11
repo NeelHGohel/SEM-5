@@ -1,7 +1,6 @@
-import 'package:adv_flutter_labs/lab_02/mvc_signup/signup_controller.dart';
-import 'package:flutter/material.dart';
 
-import '../../utils/const.dart';
+
+import '../../utils/import_export.dart';
 
 class SignupView extends StatefulWidget {
   SignupView({super.key});
@@ -35,12 +34,7 @@ class _SignupViewState extends State<SignupView> {
                   hint: "Enter Name",
                   icon: Icons.person,
                   label: "Name",
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please enter the name";
-                    }
-                    return null;
-                  },
+                  validator: signupController.nameValidator,
                 ),
 
                 SizedBox(height: TEXT_FORM_FIELD_HEIGHT),
@@ -49,18 +43,7 @@ class _SignupViewState extends State<SignupView> {
                   hint: "Enter E-mail",
                   icon: Icons.email,
                   label: "E-mail",
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Please enter email address";
-                    }
-                    String pattern =
-                        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
-                    RegExp regex = RegExp(pattern);
-                    if (!regex.hasMatch(value)) {
-                      return "Please enter a valid email address";
-                    }
-                    return null;
-                  },
+                  validator: signupController.emailValidator,
                 ),
 
                 SizedBox(height: TEXT_FORM_FIELD_HEIGHT),
@@ -69,12 +52,7 @@ class _SignupViewState extends State<SignupView> {
                   hint: "Enter Phone-Number",
                   icon: Icons.phone,
                   label: "Phone",
-                  validator: (value) {
-                    if (value!.isEmpty || value.length != 10) {
-                      return "Please enter a valid 10-digit mobile number";
-                    }
-                    return null;
-                  },
+                  validator: signupController.phoneValidator,
                 ),
 
                 SizedBox(height: TEXT_FORM_FIELD_HEIGHT),
@@ -83,14 +61,7 @@ class _SignupViewState extends State<SignupView> {
                   hint: "Enter Password",
                   icon: Icons.password,
                   label: "Password",
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please enter a password";
-                    } else if (value.length < 6) {
-                      return "Password must be at least 6 characters";
-                    }
-                    return null;
-                  },
+                  validator: signupController.passwordValidator,
                 ),
 
                 SizedBox(height: TEXT_FORM_FIELD_HEIGHT),
@@ -99,14 +70,9 @@ class _SignupViewState extends State<SignupView> {
                   hint: "Confirm Password",
                   icon: Icons.password,
                   label: "Confirm Password",
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please confirm your password";
-                    } else if (value != passwordController.text) {
-                      return "Passwords do not match";
-                    }
-                    return null;
-                  },
+                  validator: signupController.confirmPasswordValidator(
+                    password: passwordController.text,
+                  ),
                 ),
 
                 SizedBox(height: TEXT_FORM_FIELD_HEIGHT),

@@ -1,10 +1,8 @@
-import 'package:adv_flutter_labs/lab_02/mvc_A1/add_page.dart';
-import 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_controller.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../../lab_02/mvc_A1/const.dart';
-import 'crud_add_page.dart';
+
+import 'package:flutter/cupertino.dart';
+
+import '../../utils/import_export.dart';
 
 class CRUDView extends StatefulWidget {
   const CRUDView({super.key});

@@ -1,4 +1,5 @@
-import 'package:adv_flutter_labs/lab_02/mvc_A1/const.dart';
+
+import 'package:adv_flutter_labs/utils/import_export.dart';
 
 class Lab2_A1 {
   List<dynamic> userList = [];

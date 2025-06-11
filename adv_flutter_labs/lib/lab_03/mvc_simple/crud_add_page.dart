@@ -1,7 +1,6 @@
-import 'package:adv_flutter_labs/lab_02/mvc_A1/const.dart';
-import 'package:adv_flutter_labs/lab_02/mvc_A1/view.dart';
-import 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_view.dart';
-import 'package:flutter/material.dart';
+
+
+import '../../utils/import_export.dart';
 
 class CrudAddPage extends StatefulWidget {
   final dynamic user;

@@ -14,4 +14,11 @@ const String CONFIRM_PASSWORD = 'confirmPassword';
 const String BTN_CONFIRM_SIGN_UP_NAME = "Confirm";
 const String BTN_RESET_SIGN_UP_NAME = "Reset";
 
+// region KEY-VALUE
+const String ROLL = 'roll';
+bool IS_FAV = false;
+
+// endregion
+
+
 //endregion

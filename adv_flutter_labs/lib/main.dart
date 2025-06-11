@@ -1,4 +1,3 @@
-import 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_view.dart';
 import 'package:flutter/material.dart';
 
 import 'lab_02/mvc_A1/view.dart';
@@ -21,8 +20,8 @@ class MyApp extends StatelessWidget {
 
       // home: DisplayUser(),
       // home: CardView(),
-      // home: SignupView(),
-      home: CRUDView(),
+      home: SignupView(),
+      // home: CRUDView(),
     );
   }
 }

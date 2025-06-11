@@ -1,4 +1,5 @@
-import 'package:adv_flutter_labs/lab_02/mvc_A1/model.dart';
+
+import '../../utils/import_export.dart';
 
 class Controller {
   Lab2_A1 model = Lab2_A1();
