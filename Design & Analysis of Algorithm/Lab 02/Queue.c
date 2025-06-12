@@ -45,7 +45,7 @@ void display()
 {
     for (int i = front; i < rear; i++)
     {
-        printf("|%d| ", queue[i])
+        printf("|%d| ", queue[i]);
     }
 }
 
