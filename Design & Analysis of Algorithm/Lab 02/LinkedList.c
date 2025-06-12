@@ -33,8 +33,8 @@ void insertAtEnd(int value)
     while (temp->next != NULL)
     {
         temp = temp->next;
-        temp->next = newNode;
     }
+    temp->next = newNode;
     printf("insert Done\n");
 }
 
@@ -91,7 +91,7 @@ int main()
 
     while (choise != 6)
     {
-        printf("\nEnter\n1. INSERT_AT_FRONT\n2. INSERT_AT_END\n3. DELETE_AT_FRONT\n4. DELETE_AT_END\n5.DISPLAY\n6.EXIT");
+        printf("\nEnter\n1. INSERT_AT_FRONT\n2. INSERT_AT_END\n3. DELETE_AT_FRONT\n4. DELETE_AT_END\n5.DISPLAY\n6.EXIT\n");
         scanf("%d", &choise);
 
         switch (choise)
@@ -110,11 +110,13 @@ int main()
             break;
         case 3:
             deleteAtFront();
+            break;
         case 4:
             deleteAtEnd();
             break;
         case 5:
             display();
+            break;
         case 6:
             break;
         }
