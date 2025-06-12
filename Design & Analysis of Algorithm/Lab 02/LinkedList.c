@@ -89,7 +89,7 @@ int main()
 {
     int choise, value;
 
-    while (choise != 4)
+    while (choise != 6)
     {
         printf("\nEnter\n1. INSERT_AT_FRONT\n2. INSERT_AT_END\n3. DELETE_AT_FRONT\n4. DELETE_AT_END\n5.DISPLAY\n6.EXIT");
         scanf("%d", &choise);
