@@ -12,3 +12,10 @@ export 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_controller.dart';
 export 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_model.dart';
 
 export 'package:adv_flutter_labs/lab_03/mvc_crud_simple/crud_view.dart';
+
+export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_controller.dart';
+export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_model.dart';
+export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_helper.dart';
+export 'dart:io';
+export 'package:path_provider/path_provider.dart';
+export 'package:sqflite/sqflite.dart';

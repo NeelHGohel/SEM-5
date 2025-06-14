@@ -1,9 +1,16 @@
 class UserModel {
+  late int _id;
   late String _name;
   late String _email;
   late String _phone;
   late String _city;
   late String _gender;
+
+  int get id => _id;
+
+  set id(int value) {
+    _id = value;
+  }
 
   String get name => _name;
 
@@ -34,4 +41,18 @@ class UserModel {
   set gender(String value) {
     _gender = value;
   }
+
+  UserModel({
+    required String name,
+    required String email,
+    required String phone,
+    required String city,
+    required String gender,
+    required int id,
+  }) : _id = id,
+       _name = name,
+       _email = email,
+       _phone = phone,
+       _city = city,
+       _gender = gender;
 }
