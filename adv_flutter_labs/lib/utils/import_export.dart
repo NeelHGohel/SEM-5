@@ -22,4 +22,8 @@ export 'package:sqflite/sqflite.dart';
 export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_view.dart';
 export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_add_edit_page.dart';
 
+export 'package:adv_flutter_labs/lab_04/mvc_getx/getx_view.dart';
 
+export 'package:adv_flutter_labs/lab_02/mvc_ecommerce/home_page.dart';
+export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_view.dart';
+export 'package:adv_flutter_labs/lab_02/mvc_signup/signup_view.dart';
