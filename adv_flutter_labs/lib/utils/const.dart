@@ -13,7 +13,7 @@ const double TEXT_FORM_FIELD_HEIGHT = 15;
 //endregion
 
 //region MAP_SIGN_UP
-const String NAME = 'Name';
+const String NAME = 'name';
 const String EMAIL = 'e-mail';
 const String PHONE = 'phone';
 const String PASSWORD = 'password';

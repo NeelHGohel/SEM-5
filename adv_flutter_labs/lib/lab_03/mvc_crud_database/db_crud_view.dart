@@ -1,17 +1,15 @@
-import 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_add_edit_page.dart';
-
 import '../../utils/import_export.dart';
 
 class UserListView extends StatefulWidget {
   const UserListView({super.key});
-  static final  UserController controller = UserController();
+  static final UserController controller = UserController();
 
   @override
   State<UserListView> createState() => _UserListViewState();
 }
 
 class _UserListViewState extends State<UserListView> {
-  int count = 0;
+  // int count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +27,9 @@ class _UserListViewState extends State<UserListView> {
                 final user = users[index];
                 return ListTile(
                   title: Text(user.name),
-                  subtitle: Text("${user.email} | ${user.phone}"),
+                  subtitle: Text(
+                    "${user.email} | ${user.phone} | ${user.name}",
+                  ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -45,14 +45,25 @@ class _UserListViewState extends State<UserListView> {
 
                       IconButton(
                         onPressed: () {
-                          Navigator.of(context).push(
+                          Navigator.push(
+                            context,
                             MaterialPageRoute(
                               builder: (context) =>
                                   UserAddEditPage(userModel: user),
                             ),
-                          );
-                          // _controller.editUser(user, user.id);
-                          setState(() {});
+                          ).then((value) {
+                            setState(() {});
+                            debugPrint(":::::::::::::SetState Done call");
+                          });
+
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>
+                          //         UserAddEditPage(userModel: user),
+                          //   ),
+                          // );
+                          // // _controller.editUser(user, user.id);
+                          // setState(() {});
                         },
                         icon: Icon(Icons.edit),
                         color: Colors.blue,
@@ -69,9 +80,16 @@ class _UserListViewState extends State<UserListView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(
+          Navigator.push(
             context,
-          ).push(MaterialPageRoute(builder: (context) => UserAddEditPage()));
+            MaterialPageRoute(builder: (context) => UserAddEditPage()),
+          ).then((value) {
+            setState(() {});
+          });
+
+          // Navigator.of(
+          //   context,
+          // ).push(MaterialPageRoute(builder: (context) => UserAddEditPage()));
           // _controller
           //     .insertUser(
           //       UserModel(

@@ -1,5 +1,3 @@
-import 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_view.dart';
-
 import '../../utils/import_export.dart';
 
 class UserAddEditPage extends StatefulWidget {
@@ -15,26 +13,33 @@ class _UserAddEditPageState extends State<UserAddEditPage> {
 
   UserListView userListView = UserListView();
 
-  late TextEditingController nameController;
-  late TextEditingController emailController;
-  late TextEditingController phoneController;
-  late TextEditingController cityController;
-  late TextEditingController genderController;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    nameController = TextEditingController(text: widget.userModel?.name ?? '');
-    emailController = TextEditingController(
-      text: widget.userModel?.email ?? '',
-    );
-    phoneController = TextEditingController(
-      text: widget.userModel?.phone ?? '',
-    );
-    cityController = TextEditingController(text: widget.userModel?.city ?? '');
-    genderController = TextEditingController(
-      text: widget.userModel?.gender ?? '',
-    );
+    // nameController = TextEditingController(text: widget.userModel?.name ?? '');
+    // emailController = TextEditingController(
+    //   text: widget.userModel?.email ?? '',
+    // );
+    // phoneController = TextEditingController(
+    //   text: widget.userModel?.phone ?? '',
+    // );
+    // cityController = TextEditingController(text: widget.userModel?.city ?? '');
+    // genderController = TextEditingController(
+    //   text: widget.userModel?.gender ?? '',
+    // );
+    if (widget.userModel != null) {
+      nameController.text = widget.userModel!.name;
+      emailController.text = widget.userModel!.email;
+      phoneController.text = widget.userModel!.phone;
+      cityController.text = widget.userModel!.city;
+      genderController.text = widget.userModel!.gender;
+    }
   }
 
   @override
@@ -115,37 +120,70 @@ class _UserAddEditPageState extends State<UserAddEditPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (!_formKey.currentState!.validate()) {
                             return;
                           }
 
-                          isEdit
-                              ? UserListView.controller.editUser(
-                                  UserModel(
-                                    name: nameController.text,
-                                    email: emailController.text,
-                                    phone: phoneController.text,
-                                    city: cityController.text,
-                                    gender: genderController.text,
-                                  ),
-                                  nameController.text,
-                                )
-                              : UserListView.controller
-                                    .insertUser(
-                                      UserModel(
-                                        name: nameController.text,
-                                        email: emailController.text,
-                                        phone: phoneController.text,
-                                        city: cityController.text,
-                                        gender: genderController.text,
-                                      ),
-                                    )
-                                    .then((value) {
-                                      setState(() {});
-                                    });
-                          debugPrint("Insert User Done");
-                          Navigator.pop(context);
+                          if (widget.userModel == null) {
+                            UserModel newUser = UserModel(
+                              name: nameController.text.trim(),
+                              email: emailController.text.trim(),
+                              phone: phoneController.text.trim(),
+                              city: cityController.text.trim(),
+                              gender: genderController.text.trim(),
+                            );
+                            await UserListView.controller.insertUser(newUser);
+                            Navigator.pop(context, true);
+                          } else {
+                            UserModel updatedUser = UserModel(
+                              name: nameController.text.trim(),
+                              email: emailController.text.trim(),
+                              phone: phoneController.text.trim(),
+                              city: cityController.text.trim(),
+                              gender: genderController.text.trim(),
+                            );
+                            debugPrint(
+                              ":::::::::::::::::::::::New User ${updatedUser.name}",
+                            );
+                            await UserListView.controller.editUser(
+                              user: updatedUser,
+                            );
+                            Navigator.pop(context, true);
+                          }
+
+                          // isEdit
+                          //     ? UserListView.controller.editUser(
+                          //         UserModel(
+                          //           name: nameController.text,
+                          //           email: emailController.text,
+                          //           phone: phoneController.text,
+                          //           city: cityController.text,
+                          //           gender: genderController.text,
+                          //         ),
+                          //         nameController.text,
+                          //       )
+                          //     // .then((value) {
+                          //     //   setState(() {});
+                          //     // })
+                          //     : UserListView.controller.insertUser(
+                          //         UserModel(
+                          //           name: nameController.text,
+                          //           email: emailController.text,
+                          //           phone: phoneController.text,
+                          //           city: cityController.text,
+                          //           gender: genderController.text,
+                          //         ),
+                          //       );
+                          // // .then((value) {
+                          // //   setState(() {});
+                          // // });
+                          //
+                          // debugPrint(
+                          //   "::::::::::::Insert User Done::::::::::::::::",
+                          // );
+                          // setState(() {});
+                          // Navigator.pop(context);
                         },
                         child: Text(isEdit ? "Update" : "Add"),
                       ),

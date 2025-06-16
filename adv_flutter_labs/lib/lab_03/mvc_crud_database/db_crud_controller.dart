@@ -28,7 +28,7 @@ class UserController {
     });
   }
 
-  Future<void> editUser(UserModel user,String name) async {
+  Future<void> editUser({required UserModel user}) async {
     final db = await _dbHelper.initDatabase();
     await db.update(
       TBL_USERS,
