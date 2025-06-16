@@ -31,9 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
   sqflite: ^2.4.2
-  path_provider: ^2.1.5
-  carousel_slider: ^5.0.0
+  carousel_slider: ^5.1.1
   get: ^4.7.2
+  url_launcher: ^6.3.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8

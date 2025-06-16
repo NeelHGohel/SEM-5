@@ -17,7 +17,6 @@ export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_controller.dar
 export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_model.dart';
 export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_helper.dart';
 export 'dart:io';
-export 'package:path_provider/path_provider.dart';
 export 'package:sqflite/sqflite.dart';
 export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_view.dart';
 export 'package:adv_flutter_labs/lab_03/mvc_crud_database/db_crud_add_edit_page.dart';
@@ -27,3 +26,16 @@ export 'package:adv_flutter_labs/lab_04/mvc_getx/getx_view.dart';
 export 'package:adv_flutter_labs/lab_02/mvc_ecommerce/home_page.dart';
 export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_view.dart';
 export 'package:adv_flutter_labs/lab_02/mvc_signup/signup_view.dart';
+
+export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_controller.dart';
+export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_model.dart';
+export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_user_add_page.dart';
+
+export 'package:adv_flutter_labs/url_test.dart';
+export 'package:url_launcher/url_launcher.dart';
+export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_detail_design_page.dart';
+
+
+
+
+

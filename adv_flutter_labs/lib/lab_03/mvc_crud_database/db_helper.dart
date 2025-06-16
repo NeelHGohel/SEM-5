@@ -2,9 +2,10 @@ import '../../utils/import_export.dart';
 
 class DbHelper {
   Future<Database> initDatabase() async {
-    Directory appDir = await getApplicationDocumentsDirectory();
-    String dbPath = "${appDir.path}/UserDetails.db";
+    // Directory appDir = await getApplicationDocumentsDirectory();
+    // String dbPath = "${appDir.path}/UserDetails.db";
 
+    String dbPath = "${getDatabasesPath()}/UserDetails.db";
     return await openDatabase(
       dbPath,
       version: 2,

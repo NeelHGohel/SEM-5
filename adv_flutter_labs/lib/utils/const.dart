@@ -8,6 +8,16 @@ const String TBL_USERS = 'users';
 const String USER_ID = 'id';
 //endregion
 
+//region PROFILE_CARD_KEY_VALUE
+const String CARD_USER_NAME = 'name';
+const String CARD_USER_EMAIL = 'email';
+const String CARD_USER_PHONE = 'phone';
+const String CARD_USER_CITY = 'city';
+const String CARD_USER_GENDER = 'gender';
+
+//endregion
+
+
 //region SIGN_UP_CONSTANTS
 const double TEXT_FORM_FIELD_HEIGHT = 15;
 //endregion
