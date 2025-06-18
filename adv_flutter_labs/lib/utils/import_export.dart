@@ -35,6 +35,14 @@ export 'package:adv_flutter_labs/url_test.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:adv_flutter_labs/lab_02/mvc_profile_card/card_detail_design_page.dart';
 
+export 'package:adv_flutter_labs/lab_04/mvc_getx_custom/getx_custom_view.dart';
+export 'package:adv_flutter_labs/lab_04/mvc_getx_custom/getx_custom_controller.dart';
+export 'package:adv_flutter_labs/lab_04/mvc_getx_custom/getx_custom_model.dart';
+
+export 'package:get/get_core/src/get_main.dart';
+export 'package:get/get_navigation/get_navigation.dart';
+
+
 
 
 
