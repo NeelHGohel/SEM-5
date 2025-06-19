@@ -13,8 +13,8 @@ public class AdjacencyMatrix {
         System.out.println("Enter No.of edges ");
         int e = sc.nextInt();
 
-        System.out.println("Enter " + e + " edges (u v): ");
-        for (int i = 0; i < e; i++) {
+        System.out.println("Enter " + size + " edges (u v): ");
+        for (int i = 0; i < size; i++) {
             System.out.print("Enter u ");
             int u = sc.nextInt();
             System.out.print("Enter v ");
