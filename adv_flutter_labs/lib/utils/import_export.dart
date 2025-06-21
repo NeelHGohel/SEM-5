@@ -42,6 +42,7 @@ export 'package:adv_flutter_labs/lab_04/mvc_getx_custom/getx_custom_model.dart';
 export 'package:get/get_core/src/get_main.dart';
 export 'package:get/get_navigation/get_navigation.dart';
 
-export 'package:adv_flutter_labs/lab_05/getx_navigation_view.dart';
-export 'package:adv_flutter_labs/lab_05/getx_controller.dart';
-export 'package:adv_flutter_labs/lab_05/getx_model.dart';
+export 'package:adv_flutter_labs/lab_05/getx_navigation_add_edit_view.dart';
+export 'package:adv_flutter_labs/lab_05/getx_navigation_controller.dart';
+export 'package:adv_flutter_labs/lab_05/getx_navigation_list_view_page.dart';
+export 'package:adv_flutter_labs/lab_05/getx_navigation_model.dart';

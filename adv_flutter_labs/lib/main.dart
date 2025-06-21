@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // home: GetxView(),
       // home: GetxCustomView(),
-      home: GetxNavigationView(),
+      home: GetxNavigationListViewPage(),
     );
   }
 }

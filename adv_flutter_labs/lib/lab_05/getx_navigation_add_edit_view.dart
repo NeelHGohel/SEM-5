@@ -1,18 +1,18 @@
 import '../utils/import_export.dart';
 
-class GetxNavigationView extends StatelessWidget {
-  const GetxNavigationView({super.key});
+class GetxNavigationAddEditView extends StatelessWidget {
+  const GetxNavigationAddEditView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Getx Navigation")),
+      appBar: AppBar(title: Text("Add/Edit Page")),
       body: Center(
         child: TextButton(
           onPressed: () {
-            Get.to(UserAddEditPage());
+            Get.back();
           },
-          child: Text("Tap Here"),
+          child: Text("Tap to back"),
         ),
       ),
     );
