@@ -1,6 +1,5 @@
 import 'package:adv_flutter_labs/utils/import_export.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -32,8 +31,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: GetxView(),
-      home: GetxCustomView(),
-
+      // home: GetxCustomView(),
+      home: GetxNavigationView(),
     );
   }
 }
