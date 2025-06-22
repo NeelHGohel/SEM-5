@@ -32,9 +32,9 @@ class GetxNavigationController extends GetxController{
     update();
   }
 
-  RxList<GetxNavigationModel> getUserInList() {
-    return userList;
-  }
+  // RxList<GetxNavigationModel> getUserInList() {
+  //   return userList;
+  // }
 
   void deleteUserInList(index) {
     userList.removeAt(index);

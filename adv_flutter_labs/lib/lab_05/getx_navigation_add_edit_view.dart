@@ -6,7 +6,8 @@ class GetxNavigationAddEditView extends StatelessWidget {
   GetxNavigationController getxNavigationController = Get.put(
     GetxNavigationController(),
   );
-  GetxNavigationAddEditView({super.key});
+  GetxNavigationModel? getxNavigationModel;
+  GetxNavigationAddEditView({super.key, this.getxNavigationModel});
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +68,7 @@ class GetxNavigationAddEditView extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     getxNavigationController.addUserInList();
+                    print(getxNavigationController.userList);
                     Get.back();
                   },
                   child: Text("Save"),
