@@ -46,3 +46,4 @@ export 'package:adv_flutter_labs/lab_05/getx_navigation_add_edit_view.dart';
 export 'package:adv_flutter_labs/lab_05/getx_navigation_controller.dart';
 export 'package:adv_flutter_labs/lab_05/getx_navigation_list_view_page.dart';
 export 'package:adv_flutter_labs/lab_05/getx_navigation_model.dart';
+
