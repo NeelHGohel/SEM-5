@@ -29,7 +29,7 @@ int main()
 
     // BEst case
 
-    fp = fopen("best_1000.txt", "r");
+    fp = fopen("Array Data Text Files/best_1000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
@@ -42,7 +42,7 @@ int main()
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Worst case
-    fp = fopen("worst_1000.txt", "r");
+    fp = fopen("Array Data Text Files/worst_1000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
@@ -55,7 +55,7 @@ int main()
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Avg case
-    fp = fopen("avg_1000.txt", "r");
+    fp = fopen("Array Data Text Files/avg_1000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
