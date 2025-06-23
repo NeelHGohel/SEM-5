@@ -1,74 +1,68 @@
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../utils/import_export.dart';
 
 class GetxNavigationListViewPage extends StatelessWidget {
-  GetxNavigationListViewPage({super.key});
+  const GetxNavigationListViewPage({super.key});
+
+  // return Scaffold(
+  //   appBar: AppBar(title: Text("Getx Navigation")),
+  //   body: Center(
+  //     child: TextButton(
+  //       onPressed: () {
+  //         Get.to(GetxNavigationAddEditView());
+  //       },
+  //       child: Text("Tap Here"),
+  //     ),
+  //   ),
+  // );
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: AppBar(title: Text("Getx Navigation")),
-    //   body: Center(
-    //     child: TextButton(
-    //       onPressed: () {
-    //         Get.to(GetxNavigationAddEditView());
-    //       },
-    //       child: Text("Tap Here"),
-    //     ),
-    //   ),
-    // );
+    final controller = Get.find<GetxNavigationController>();
 
     return Scaffold(
-      appBar: AppBar(title: Text("User List View ")),
-      body: GetBuilder<GetxNavigationController>(
-        init: GetxNavigationController(),
-
-        builder: (controller) {
-          print(controller.userList);
-          return controller.userList.isNotEmpty
-              ? ListView.builder(
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(controller.userList[index].name),
-                      subtitle: Text(
-                        "${controller.userList[index].phone} || ${controller.userList[index].city}",
-                      ),
-                      trailing: Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Get.to(
-                                GetxNavigationAddEditView(
-                                  getxNavigationModel: GetxNavigationModel(
-                                    name: controller.userList[index].name,
-                                    phone: controller.userList[index].phone,
-                                    city: controller.userList[index].city,
-                                  ),
-                                ),
-                              );
-                            },
-                            icon: Icon(Icons.edit),
-                          ),
-                          SizedBox(width: 2),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.delete),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  itemCount: controller.userList.length,
-                )
-              : Center(child: Text("No User Found"));
-        },
-      ),
+      appBar: AppBar(title: const Text("User List View")),
+      body: Obx(() {
+        return controller.userList.isNotEmpty
+            ? ListView.builder(
+                itemCount: controller.userList.length,
+                itemBuilder: (context, index) {
+                  final user = controller.userList[index];
+                  return ListTile(
+                    title: Text(user.name),
+                    subtitle: Text("${user.phone} || ${user.city}"),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Get.toNamed(
+                              GETX_NAVIGATION_ADD_EDIT_PAGE,
+                              arguments: user,
+                            );
+                          },
+                          icon: const Icon(Icons.edit),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            controller.deleteUserInList(index);
+                          },
+                          icon: const Icon(Icons.delete),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              )
+            : const Center(child: Text("No User Found"));
+      }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(GetxNavigationAddEditView());
+          Get.toNamed(GETX_NAVIGATION_ADD_EDIT_PAGE);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -9,7 +9,7 @@ class UserAddEditPage extends StatefulWidget {
 }
 
 class _UserAddEditPageState extends State<UserAddEditPage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKeyDBCRUD = GlobalKey<FormState>();
 
   UserListView userListView = UserListView();
 
@@ -53,7 +53,7 @@ class _UserAddEditPageState extends State<UserAddEditPage> {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Form(
-              key: _formKey,
+              key: _formKeyDBCRUD,
               child: Column(
                 children: [
                   TextFormField(
@@ -121,7 +121,7 @@ class _UserAddEditPageState extends State<UserAddEditPage> {
                     children: [
                       ElevatedButton(
                         onPressed: () async {
-                          if (!_formKey.currentState!.validate()) {
+                          if (!_formKeyDBCRUD.currentState!.validate()) {
                             return;
                           }
 
@@ -191,7 +191,7 @@ class _UserAddEditPageState extends State<UserAddEditPage> {
 
                       ElevatedButton(
                         onPressed: () {
-                          _formKey.currentState?.reset();
+                          _formKeyDBCRUD.currentState?.reset();
                           nameController.clear();
                           emailController.clear();
                           phoneController.clear();

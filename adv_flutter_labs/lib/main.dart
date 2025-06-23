@@ -1,6 +1,10 @@
 import 'package:adv_flutter_labs/utils/import_export.dart';
+import 'package:get/get.dart';
+
+import 'lab_05/app_route.dart';
 
 void main() {
+  Get.put(GetxNavigationController());
   runApp(const MyApp());
 }
 
@@ -32,7 +36,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // home: GetxView(),
       // home: GetxCustomView(),
-      home: GetxNavigationListViewPage(),
+      getPages: AppRoute.route,
+      initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
     );
   }
 }

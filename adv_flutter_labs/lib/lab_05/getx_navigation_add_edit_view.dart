@@ -1,28 +1,25 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../utils/import_export.dart';
 
 class GetxNavigationAddEditView extends StatelessWidget {
-  GetxNavigationController getxNavigationController = Get.put(
-    GetxNavigationController(),
-  );
+  final GetxNavigationController getxNavigationController =
+      Get.find<GetxNavigationController>();
   GetxNavigationModel? getxNavigationModel;
-  GetxNavigationAddEditView({super.key, this.getxNavigationModel});
+
+  GetxNavigationAddEditView({super.key}) {
+    getxNavigationModel = Get.arguments;
+
+    if (getxNavigationModel != null) {
+      getxNavigationController.nameController.text = getxNavigationModel!.name;
+      getxNavigationController.cityController.text = getxNavigationModel!.city;
+      getxNavigationController.phoneController.text =
+          getxNavigationModel!.phone;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: AppBar(title: Text("Add/Edit Page")),
-    //   body: Center(
-    //     child: TextButton(
-    //       onPressed: () {
-    //         Get.back();
-    //       },
-    //       child: Text("Tap to back"),
-    //     ),
-    //   ),
-    // );
-
     return Scaffold(
       appBar: AppBar(title: Text("Add/Edit Page")),
       body: Padding(
@@ -67,8 +64,12 @@ class GetxNavigationAddEditView extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    getxNavigationController.addUserInList();
-                    print(getxNavigationController.userList);
+                    if (getxNavigationModel == null) {
+                      // New user
+                      getxNavigationController.addUserInList();
+                    } else {
+                      // Update logic (optional enhancement)
+                    }
                     Get.back();
                   },
                   child: Text("Save"),

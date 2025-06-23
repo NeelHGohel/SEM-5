@@ -17,7 +17,6 @@ const String CARD_USER_GENDER = 'gender';
 
 //endregion
 
-
 //region SIGN_UP_CONSTANTS
 const double TEXT_FORM_FIELD_HEIGHT = 15;
 //endregion
@@ -40,4 +39,6 @@ bool IS_FAV = false;
 
 // endregion
 
+const String GETX_NAVIGATION_LIST_VIEW_PAGE = '/GetxNavigationListViewPage';
+const String GETX_NAVIGATION_ADD_EDIT_PAGE = '/GetxNavigationAddEditView';
 //endregion

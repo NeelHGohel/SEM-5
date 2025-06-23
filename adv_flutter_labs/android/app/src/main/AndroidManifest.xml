@@ -1,20 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-feature
-        android:name="android.hardware.telephony"
-        android:required="false" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.DIAL"/>
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.CALL"/>
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.SENDTO"/>
-        </intent>
-    </queries>
     <application
         android:label="adv_flutter_labs"
         android:name="${applicationName}"

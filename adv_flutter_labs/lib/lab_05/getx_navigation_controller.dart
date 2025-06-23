@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../utils/import_export.dart';
 
-class GetxNavigationController extends GetxController{
+class GetxNavigationController extends GetxController {
   RxList<GetxNavigationModel> userList = <GetxNavigationModel>[].obs;
 
   TextEditingController nameController = TextEditingController();
