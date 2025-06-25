@@ -2,6 +2,7 @@ import 'package:adv_flutter_labs/utils/import_export.dart';
 import 'package:get/get.dart';
 
 import 'lab_05/app_route.dart';
+import 'lab_06/change_string_real_time.dart';
 
 void main() {
   Get.put(GetxNavigationController());
@@ -36,8 +37,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // home: GetxView(),
       // home: GetxCustomView(),
-      getPages: AppRoute.route,
-      initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
+      // getPages: AppRoute.route,
+      // initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
+      home: ChangeStringRealTime(),
     );
   }
 }
