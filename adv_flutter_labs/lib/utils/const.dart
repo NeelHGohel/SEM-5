@@ -42,3 +42,13 @@ bool IS_FAV = false;
 const String GETX_NAVIGATION_LIST_VIEW_PAGE = '/GetxNavigationListViewPage';
 const String GETX_NAVIGATION_ADD_EDIT_PAGE = '/GetxNavigationAddEditView';
 //endregion
+
+
+//region DB_GETX_CRUD_TABLE_CONST
+const String TBL_NAME = "TBL_USER_GETX";
+const String DATABASE_NAME = "GetXDB";
+const String COL_USER_ID = "id";
+const String COL_USER_NAME = "Name";
+const String COL_USER_CITY = "City";
+const String COL_USER_ROLL = "Roll";
+//endregion
