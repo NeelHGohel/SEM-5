@@ -48,7 +48,7 @@ int main()
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Worst case
-    fp = fopen("/Lab 03/Array Data Text Filesworst_100000.txt", "r");
+    fp = fopen("/Lab 03/Array Data Text Files/worst_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);

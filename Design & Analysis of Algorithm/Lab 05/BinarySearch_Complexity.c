@@ -2,44 +2,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-void heapify(int arr[], int n, int i)
+void BinarySearch(int arr[], int element, int n)
 {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+    int left = 0, right = n - 1;
 
-    if (left < n && arr[left] > arr[largest])
-        largest = left;
-
-    if (right < n && arr[right] > arr[largest])
-        largest = right;
-
-    if (largest != i)
+    while (left <= right)
     {
-        int temp = arr[i];
-        arr[i] = arr[largest];
-        arr[largest] = temp;
-        heapify(arr, n, largest);
-    }
-}
-
-void heapSort(int arr[], int n)
-{
-    for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
-
-    for (int i = n - 1; i > 0; i--)
-    {
-        int temp = arr[0];
-        arr[0] = arr[i];
-        arr[i] = temp;
-        heapify(arr, i, 0);
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == element)
+        {
+            printf("Element Found at %d position", mid);
+            break;
+        }
+        if (arr[mid] < element)
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid - 1;
+        }
     }
 }
 
 int main()
 {
-    int n;
+    int n, element = 0;
     printf("Enter size of Array ");
     scanf("%d", &n);
     FILE *fp;
@@ -53,9 +41,11 @@ int main()
         fscanf(fp, "%d", &arr[i]);
     }
     fclose(fp);
+    printf("Enter Element to Search\n");
+    scanf("%d", &element);
     printf("Best Case Scenario");
     start = clock();
-    heapSort(arr, n);
+    BinarySearch(arr, element, n);
     end = clock();
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
@@ -68,7 +58,7 @@ int main()
     fclose(fp);
     printf("worst Case Scenario");
     start = clock();
-    heapSort(arr, n);
+    BinarySearch(arr, element, n);
     end = clock();
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
@@ -81,7 +71,7 @@ int main()
     fclose(fp);
     printf("avg Case Scenario");
     start = clock();
-    heapSort(arr, n);
+    BinarySearch(arr, element, n);
     end = clock();
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 }
