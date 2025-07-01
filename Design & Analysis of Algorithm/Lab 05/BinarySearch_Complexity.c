@@ -11,7 +11,7 @@ void BinarySearch(int arr[], int element, int n)
         int mid = left + (right - left) / 2;
         if (arr[mid] == element)
         {
-            printf("Element Found at %d position", mid);
+            printf("\nElement Found at %d position", mid);
             break;
         }
         if (arr[mid] < element)
@@ -35,7 +35,7 @@ int main()
     int i, arr[n], temp, swapped;
 
     // Best case
-    fp = fopen("/Lab 03/Array Data Text Files/best_100000.txt", "r");
+    fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/best_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
@@ -50,7 +50,7 @@ int main()
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Worst case
-    fp = fopen("/Lab 03/Array Data Text Files/worst_100000.txt", "r");
+    fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/worst_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
@@ -63,7 +63,7 @@ int main()
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Avg case
-    fp = fopen("/Lab 03/Array Data Text Files/avg_100000.txt", "r");
+    fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/avg_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
