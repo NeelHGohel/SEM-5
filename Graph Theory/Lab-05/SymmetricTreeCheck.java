@@ -1,6 +1,5 @@
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class SymmetricTreeCheck {
     public static void main(String[] args) {
