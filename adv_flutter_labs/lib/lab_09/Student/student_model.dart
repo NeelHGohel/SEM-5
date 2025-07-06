@@ -49,19 +49,19 @@ class StudentModel {
     _phoneNumber = value;
   }
 
-  StudentModel({
-    required int studentID,
-    required String name,
-    required String enrollmentNumber,
-    required double tenthGrade,
-    required double twelfthGrade,
-    required String city,
-    required String phoneNumber,
-  }) : _city = city,
-       _name = name,
-       _enrollmentNumber = enrollmentNumber,
-       _phoneNumber = phoneNumber,
-       _studentID = studentID,
-       _tenthGrade = tenthGrade,
-       _twelfthGrade = twelfthGrade;
+  // StudentModel({
+  //   required int studentID,
+  //   required String name,
+  //   required String enrollmentNumber,
+  //   required double tenthGrade,
+  //   required double twelfthGrade,
+  //   required String city,
+  //   required String phoneNumber,
+  // }) : _city = city,
+  //      _name = name,
+  //      _enrollmentNumber = enrollmentNumber,
+  //      _phoneNumber = phoneNumber,
+  //      _studentID = studentID,
+  //      _tenthGrade = tenthGrade,
+  //      _twelfthGrade = twelfthGrade;
 }

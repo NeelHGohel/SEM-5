@@ -1,4 +1,4 @@
-import '../utils/import_export.dart';
+import '../../utils/import_export.dart';
 
 class StudentAddEditPage extends StatelessWidget {
   const StudentAddEditPage({super.key});
