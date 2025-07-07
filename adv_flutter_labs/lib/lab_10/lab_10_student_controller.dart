@@ -20,14 +20,15 @@ class Lab10StudentController extends GetxController {
   void onInit() {
     super.onInit();
     getAllStudent();
+    print("Data is fetched");
   }
 
-  Future<RxList<Lab10Database>> getAllStudent() async {
+  Future<RxList<Lab10StudentModel>> getAllStudent() async {
     Database db = await lab10database.initDatabase();
     List<Map<String, Object?>> list = await db.rawQuery('''
       SELECT * FROM $LAB_10_STUDENT
     ''');
-    RxList<Lab10Database> students = <Lab10Database>[].obs;
+    RxList<Lab10StudentModel> students = <Lab10StudentModel>[].obs;
     list.forEach((element) {
       Lab10StudentModel model = Lab10StudentModel();
       model.id = element[ID] as int;
@@ -35,23 +36,28 @@ class Lab10StudentController extends GetxController {
       model.name = element[NAME].toString();
       model.university = element[UNIVERSITY].toString();
 
-      students.addAll(model as Iterable<Lab10Database>);
+      students.add(model);
     });
+    print("::::::::::::::::::;data now return is called");
+
     return students;
   }
 
   Future<void> addStudent(Lab10StudentModel) async {
     Database db = await lab10database.initDatabase();
     db.insert(LAB_10_STUDENT, Lab10StudentModel);
+    print("::::::::::::::::::;add is called");
   }
 
   Future<void> editStudent(index, Lab10StudentModel) async {
     Database db = await lab10database.initDatabase();
     db.update(LAB_10_STUDENT, Lab10StudentModel);
+    print("::::::::::::::::::;edit is called");
   }
 
   Future<void> deleteStudent(index) async {
     Database db = await lab10database.initDatabase();
     db.delete(LAB_10_STUDENT);
+    print("::::::::::::::::::;delete is called");
   }
 }

@@ -12,6 +12,7 @@ class Lab10StudentView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Student List")),
       body: ListView.builder(
+        itemCount: controller.students.length,
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(controller.students[index].name),
@@ -36,6 +37,7 @@ class Lab10StudentView extends StatelessWidget {
               ],
             ),
           );
+
         },
       ),
     );
