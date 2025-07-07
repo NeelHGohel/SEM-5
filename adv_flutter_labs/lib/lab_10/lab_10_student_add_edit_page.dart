@@ -1,16 +1,22 @@
 import 'package:adv_flutter_labs/lab_10/lab_10_student_controller.dart';
 import 'package:adv_flutter_labs/lab_10/lab_10_student_model.dart';
 import 'package:get/get.dart';
-
 import '../utils/import_export.dart';
 
 class Lab10StudentAddEditPage extends StatelessWidget {
-  const Lab10StudentAddEditPage({super.key});
+  Lab10StudentModel? user;
+  Lab10StudentAddEditPage({super.key, this.user});
 
   @override
   Widget build(BuildContext context) {
     Lab10StudentController controller = Get.find<Lab10StudentController>();
 
+    if (user != null) {
+      controller.nameController.text = user!.name!;
+      controller.cityController.text = user!.city!;
+      controller.universityController.text = user!.university!;
+      controller.branchController.text = user!.branch!;
+    }
     return Scaffold(
       appBar: AppBar(title: Text("Add Edit Page")),
       body: Padding(
@@ -63,15 +69,27 @@ class Lab10StudentAddEditPage extends StatelessWidget {
                 SizedBox(width: 8),
                 TextButton(
                   onPressed: () {
-                    Lab10StudentModel newStudent = Lab10StudentModel();
-                    newStudent.name = controller.nameController.toString();
-                    newStudent.city = controller.cityController.toString();
-                    newStudent.university = controller.universityController
-                        .toString();
-                    newStudent.branch = controller.branchController.toString();
-                    controller.addStudent(newStudent);
+                    Lab10StudentModel newStudent = Lab10StudentModel(
+                      branch: controller.branchController.text,
+                      city: controller.cityController.text,
+                      name: controller.nameController.text,
+                      university: controller.universityController.text,
+                    );
+
+                    if (user == null) {
+                      controller.addStudent(newStudent);
+                    } else {
+                      newStudent.id = user!.id;
+                      controller.editStudent(user!.id!, newStudent);
+                    }
+
+                    Get.back();
+                    controller.nameController.clear();
+                    controller.branchController.clear();
+                    controller.universityController.clear();
+                    controller.cityController.clear();
                   },
-                  child: Text("Submit"),
+                  child: Text(controller.isEdit ?"Edit":"Submit"),
                 ),
               ],
             ),

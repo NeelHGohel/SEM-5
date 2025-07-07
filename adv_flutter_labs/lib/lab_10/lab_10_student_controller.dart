@@ -1,9 +1,9 @@
-import 'package:adv_flutter_labs/lab_01/a_2.dart';
-import 'package:adv_flutter_labs/lab_09/Student/student_model.dart';
+import 'dart:ffi';
+
 import 'package:adv_flutter_labs/lab_10/lab_10_student_model.dart';
 import 'package:adv_flutter_labs/utils/import_export.dart' hide NAME;
 import 'package:get/get.dart';
-
+import 'package:sqflite/sqflite.dart';
 import 'lab_10_database.dart';
 import 'lab_10_student_const.dart';
 
@@ -11,11 +11,12 @@ class Lab10StudentController extends GetxController {
   RxList<Lab10StudentModel> students = <Lab10StudentModel>[].obs;
   Lab10Database lab10database = Lab10Database();
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController cityController = TextEditingController();
-  TextEditingController universityController = TextEditingController();
-  TextEditingController branchController = TextEditingController();
+  var nameController = TextEditingController();
+  var cityController = TextEditingController();
+  var universityController = TextEditingController();
+  var branchController = TextEditingController();
 
+  bool isEdit = false;
   @override
   void onInit() {
     super.onInit();
@@ -23,41 +24,43 @@ class Lab10StudentController extends GetxController {
     print("Data is fetched");
   }
 
-  Future<RxList<Lab10StudentModel>> getAllStudent() async {
+  Future<void> getAllStudent() async {
     Database db = await lab10database.initDatabase();
-    List<Map<String, Object?>> list = await db.rawQuery('''
-      SELECT * FROM $LAB_10_STUDENT
+    List<Map<String, dynamic>> list = await db.rawQuery('''
+    SELECT * FROM $LAB_10_STUDENT;
     ''');
-    RxList<Lab10StudentModel> students = <Lab10StudentModel>[].obs;
-    list.forEach((element) {
-      Lab10StudentModel model = Lab10StudentModel();
-      model.id = element[ID] as int;
-      model.city = element[CITY].toString();
-      model.name = element[NAME].toString();
-      model.university = element[UNIVERSITY].toString();
 
-      students.add(model);
-    });
-    print("::::::::::::::::::;data now return is called");
-
-    return students;
+    RxList<Lab10StudentModel> tempList = <Lab10StudentModel>[].obs;
+    for (var element in list) {
+      tempList.add(Lab10StudentModel.fromMap(element));
+    }
+    students.value = tempList;
+    print("::::::::: getAllStudent executed");
   }
 
-  Future<void> addStudent(Lab10StudentModel) async {
+  Future<void> addStudent(Lab10StudentModel student) async {
     Database db = await lab10database.initDatabase();
-    db.insert(LAB_10_STUDENT, Lab10StudentModel);
-    print("::::::::::::::::::;add is called");
+    await db.insert(LAB_10_STUDENT, student.toMap());
+    await getAllStudent(); // Refresh list
+    print("::::::::: addStudent executed");
   }
 
-  Future<void> editStudent(index, Lab10StudentModel) async {
-    Database db = await lab10database.initDatabase();
-    db.update(LAB_10_STUDENT, Lab10StudentModel);
-    print("::::::::::::::::::;edit is called");
+  Future<void> editStudent(int id, Lab10StudentModel updatedStudent) async {
+    final db = await lab10database.initDatabase();
+    await db.update(
+      LAB_10_STUDENT,
+      updatedStudent.toMap(),
+      where: '$ID = ?',
+      whereArgs: [id],
+    );
+    getAllStudent();
   }
 
-  Future<void> deleteStudent(index) async {
+
+  Future<void> deleteStudent(int id) async {
     Database db = await lab10database.initDatabase();
-    db.delete(LAB_10_STUDENT);
-    print("::::::::::::::::::;delete is called");
+    await db.delete(LAB_10_STUDENT, where: '$ID = ?', whereArgs: [id]);
+    await getAllStudent(); // Refresh list
+    print("::::::::: deleteStudent executed");
   }
 }
