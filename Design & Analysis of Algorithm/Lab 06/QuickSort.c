@@ -48,15 +48,13 @@ void main()
     int n = 0;
     printf("Enter Size of Array\n");
     scanf("%d", &n);
-    int arr[n];
-    int LB = 0;
-    int UB = n;
+    int arr[n], lb = 0, ub = n;
     for (int i = 0; i < n; i++)
     {
         printf("Enter element ");
         scanf("%d", &arr[i]);
     }
-    quickSort(arr, LB, UB);
+    quickSort(arr, lb, ub);
 
     for (int i = 0; i < n; i++)
     {
