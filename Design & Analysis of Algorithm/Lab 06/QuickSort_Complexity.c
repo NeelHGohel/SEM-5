@@ -45,19 +45,21 @@ void quickSort(int arr[], int lb, int ub)
     }
 }
 
-// void generateBestCase(int arr[], int i, int j)
-// {
+void generateBestCase(int arr[], int i, int j)
+{
 
-//     if (i < j)
-//     {
-//         int mid = (i + j) / 2;
+    if (i < j)
+    {
+        int mid = (i + j) / 2;
 
-//         int temp = arr[i];
-//         arr[i] = arr[mid];
-//         arr[mid] = temp;
+        int temp = arr[i];
+        arr[i] = arr[mid];
+        arr[mid] = temp;
 
-//     }
-// }
+        generateBestCase(arr, i + 1, mid);
+        generateBestCase(arr, mid + 1, j);
+    }
+}
 
 int main()
 {
@@ -76,7 +78,7 @@ int main()
     }
     fclose(fp);
 
-    // generateBestCase(arr, 0, n - 1);
+    generateBestCase(arr, 0, n - 1);
     printf("Best Case Scenario");
     start = clock();
     quickSort(arr, lb, ub);
