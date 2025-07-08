@@ -22,7 +22,7 @@ int main()
     scanf("%d", &n);
     FILE *fp;
     clock_t start, end;
-    int i, arr[n], temp, swapped;
+    int i, arr[n];
 
     // Best case
     fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/best_100000.txt", "r");

@@ -1,56 +1,74 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
-void BinarySearch(int arr[], int element, int n)
+int partition(int arr[], int lb, int ub)
 {
-    int left = 0, right = n - 1;
+    int key = arr[lb];
+    int i = lb;
+    int j = ub;
 
-    while (left <= right)
+    while (i < j)
     {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] == element)
+        while (i <= ub && arr[i] <= key)
         {
-            printf("\nElement Found at %d position", mid);
-            break;
+            i++;
         }
-        if (arr[mid] < element)
+
+        while (arr[j] > key)
         {
-            left = mid + 1;
+            j--;
         }
-        else
+
+        if (i < j)
         {
-            right = mid - 1;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
+    }
+
+    int temp = arr[lb];
+    arr[lb] = arr[j];
+    arr[j] = temp;
+    return j;
+}
+
+void quickSort(int arr[], int lb, int ub)
+{
+    if (lb < ub)
+    {
+        int keyIndex = partition(arr, lb, ub);
+        quickSort(arr, lb, keyIndex - 1);
+        quickSort(arr, keyIndex + 1, ub);
     }
 }
 
 int main()
 {
-    int n, element = 0;
+    int n;
     printf("Enter size of Array ");
     scanf("%d", &n);
     FILE *fp;
     clock_t start, end;
-    int i, arr[n];
+    int i, arr[n], lb = 0, ub = n;
 
     // Best case
-    fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/best_100000.txt", "r");
+    fp = fopen("/Lab 03/Array Data Text Files/best_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
     }
     fclose(fp);
-    printf("Enter Element to Search\n");
-    scanf("%d", &element);
     printf("Best Case Scenario");
     start = clock();
-    BinarySearch(arr, element, n);
+    quickSort(arr, lb, ub);
     end = clock();
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Worst case
-    fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/worst_100000.txt", "r");
+    fp = fopen("/Lab 03/Array Data Text Files/worst_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
@@ -58,12 +76,12 @@ int main()
     fclose(fp);
     printf("worst Case Scenario");
     start = clock();
-    BinarySearch(arr, element, n);
+    quickSort(arr, lb, ub);
     end = clock();
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 
     // Avg case
-    fp = fopen("D:/College Programs/SEM 5/Design & Analysis of Algorithm/Lab 03/Array Data Text Files/avg_100000.txt", "r");
+    fp = fopen("/Lab 03/Array Data Text Files/avg_100000.txt", "r");
     for (i = 0; i < n; i++)
     {
         fscanf(fp, "%d", &arr[i]);
@@ -71,7 +89,7 @@ int main()
     fclose(fp);
     printf("avg Case Scenario");
     start = clock();
-    BinarySearch(arr, element, n);
+    quickSort(arr, lb, ub);
     end = clock();
     printf("\nTime taken: %.2f seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 }
