@@ -5,6 +5,7 @@ import 'lab_05/app_route.dart';
 import 'lab_06/change_string_real_time.dart';
 import 'lab_07/crud_getx_view.dart';
 import 'lab_10/lab_10_student_view.dart';
+import 'lab_11/lab_11_api_view.dart';
 
 void main() {
   Get.put(GetxNavigationController());
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       // home: GetxCustomView(),
       // getPages: AppRoute.route,
       // initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
-      home: Lab10StudentView(),
+      home: Lab11ApiView(),
     );
   }
 }

@@ -52,3 +52,7 @@ const String COL_USER_NAME = "Name";
 const String COL_USER_CITY = "City";
 const String COL_USER_ROLL = "Roll";
 //endregion
+
+// region LAB_11_API
+const String BASE_URL = "";
+//endregion
