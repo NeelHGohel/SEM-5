@@ -18,12 +18,16 @@ class Lab11ApiView extends StatelessWidget {
             itemBuilder: (context, index) {
               return ListTile(
                 title: Text(controller.list[index].LAB_11_NAME.toString()),
+                subtitle: Text(
+                  "${controller.list[index].LAB_11_EMAIL.toString()} | ${controller.list[index].LAB_11_ADDRESS.toString()}",
+                ),
               );
             },
             itemCount: controller.list.length,
           );
         },
       ),
+
     );
   }
 }
