@@ -54,5 +54,5 @@ const String COL_USER_ROLL = "Roll";
 //endregion
 
 // region LAB_11_API
-const String BASE_URL = "";
+const String BASE_URL = "https://67d0f1c3825945773eb2616e.mockapi.io/AdvFlutter";
 //endregion
