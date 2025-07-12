@@ -11,11 +11,6 @@ class Lab11ApiRepo implements Lab11ApiService {
   }
 
   @override
-  Future<http.Response> deleteData({data, id}) async {
-    return await http.delete(Uri.parse("$BASE_URL/$id"));
-  }
-
-  @override
   Future<http.Response> editData({data, id}) async {
     return await http.put(Uri.parse("$BASE_URL/$id"), body: data);
   }
@@ -23,5 +18,10 @@ class Lab11ApiRepo implements Lab11ApiService {
   @override
   Future<http.Response> getData({data}) async {
     return await http.get(Uri.parse(BASE_URL));
+  }
+
+  @override
+  Future<http.Response> deleteData({data,index}) async {
+    return await http.delete(Uri.parse("$BASE_URL/$index"));
   }
 }

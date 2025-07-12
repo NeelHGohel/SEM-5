@@ -12,6 +12,9 @@ class Lab11ApiController extends GetxController {
   Lab11ApiController(this.api);
 
   RxList<Lab11ApiModel> list = <Lab11ApiModel>[].obs;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
 
   @override
   void onInit() {
@@ -21,6 +24,10 @@ class Lab11ApiController extends GetxController {
 
   Future<void> addData(Lab11ApiModel model) async {
     await api!.addData(data: model.toMap());
+  }
+
+  Future<void> deleteData({data,index}) async {
+    await api!.deleteData(index: index,data: data);
   }
 
   Future<void> getData() async {

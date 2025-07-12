@@ -1,3 +1,4 @@
+import 'package:adv_flutter_labs/lab_11/lab_11_api_add_edit_page.dart';
 import 'package:adv_flutter_labs/lab_11/lab_11_api_controller.dart';
 import 'package:get/get.dart';
 
@@ -21,13 +22,40 @@ class Lab11ApiView extends StatelessWidget {
                 subtitle: Text(
                   "${controller.list[index].LAB_11_EMAIL.toString()} | ${controller.list[index].LAB_11_ADDRESS.toString()}",
                 ),
+                trailing: SizedBox(
+                  width: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.edit, color: Colors.blue),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          controller.deleteData(
+                            data: controller.list[index],
+                            index: index,
+                          );
+                          print("delete done");
+                        },
+                        icon: Icon(Icons.delete, color: Colors.red),
+                      ),
+                    ],
+                  ),
+                ),
               );
             },
             itemCount: controller.list.length,
           );
         },
       ),
-
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(Lab11ApiAddEditPage());
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
