@@ -1,3 +1,4 @@
+import 'package:adv_flutter_labs/lab_11/lab_11_api_routes.dart';
 import 'package:adv_flutter_labs/utils/import_export.dart';
 import 'package:get/get.dart';
 
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
       // home: GetxCustomView(),
       // getPages: AppRoute.route,
       // initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
-      home: Lab11ApiView(),
+      getPages: Lab11ApiRoutes.route,
+      initialRoute: LAB11APIVIEW,
     );
   }
 }

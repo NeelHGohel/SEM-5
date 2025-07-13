@@ -26,8 +26,8 @@ class Lab11ApiController extends GetxController {
     await api!.addData(data: model.toMap());
   }
 
-  Future<void> deleteData({data,index}) async {
-    await api!.deleteData(index: index,data: data);
+  Future<void> deleteData({index}) async {
+    await api!.deleteData(index: index);
   }
 
   Future<void> getData() async {
