@@ -25,6 +25,9 @@ class Lab11ApiController extends GetxController {
   Future<void> addData(Lab11ApiModel model) async {
     await api!.addData(data: model.toMap());
   }
+  Future<void> editData({Lab11ApiModel? model, int? index}) async {
+    await api!.editData(data: model!.toMap(),);
+  }
 
   Future<void> deleteData({index}) async {
     await api!.deleteData(index: index);
@@ -39,7 +42,6 @@ class Lab11ApiController extends GetxController {
         list.add(
           Lab11ApiModel(
             LAB_11_NAME: element['name'],
-            LAB_11_ID: element['id'],
             LAB_11_EMAIL: element['email'],
             LAB_11_ADDRESS: element['address'],
           ),

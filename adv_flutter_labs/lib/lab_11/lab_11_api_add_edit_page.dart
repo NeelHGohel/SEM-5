@@ -49,7 +49,6 @@ class Lab11ApiAddEditPage extends StatelessWidget {
                     LAB_11_ADDRESS: controller.addressController.text,
                     LAB_11_EMAIL: controller.emailController.text,
                     LAB_11_NAME: controller.nameController.text,
-                    LAB_11_ID: "101",
                   );
                   await controller.addData(newUser);
                   Get.back();

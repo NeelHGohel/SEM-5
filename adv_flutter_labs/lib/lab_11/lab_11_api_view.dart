@@ -1,5 +1,6 @@
 import 'package:adv_flutter_labs/lab_11/lab_11_api_add_edit_page.dart';
 import 'package:adv_flutter_labs/lab_11/lab_11_api_controller.dart';
+import 'package:adv_flutter_labs/lab_11/lab_11_api_model.dart';
 import 'package:adv_flutter_labs/lab_11/lab_11_api_routes.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +31,31 @@ class Lab11ApiView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.nameController.text = controller
+                                .list[index]
+                                .LAB_11_NAME
+                                .toString();
+                            controller.emailController.text = controller
+                                .list[index]
+                                .LAB_11_EMAIL
+                                .toString();
+                            controller.addressController.text = controller
+                                .list[index]
+                                .LAB_11_ADDRESS
+                                .toString();
+
+                            Lab11ApiModel editedUser = Lab11ApiModel(
+                              LAB_11_NAME: controller.nameController.text,
+                              LAB_11_EMAIL: controller.emailController.text,
+                              LAB_11_ADDRESS: controller.addressController.text,
+                            );
+
+                            controller.editData(
+                              index: index,
+                              model: editedUser,
+                            );
+                          },
                           icon: Icon(Icons.edit, color: Colors.blue),
                         ),
                         IconButton(
