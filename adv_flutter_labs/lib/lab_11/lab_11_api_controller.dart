@@ -16,6 +16,7 @@ class Lab11ApiController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
+  TextEditingController searchController = TextEditingController();
   @override
   void onInit() {
     super.onInit();

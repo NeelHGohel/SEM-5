@@ -1,6 +1,5 @@
 import 'package:adv_flutter_labs/lab_11/lab_11_api_controller.dart';
 import 'package:adv_flutter_labs/lab_11/lab_11_api_model.dart';
-import 'package:adv_flutter_labs/lab_11/lab_11_api_view.dart';
 import 'package:get/get.dart';
 
 import '../utils/import_export.dart';

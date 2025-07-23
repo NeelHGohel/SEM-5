@@ -14,66 +14,89 @@ class Lab11ApiView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("API CRUD")),
-      body: GetX<Lab11ApiController>(
-        init: Lab11ApiController(Lab11ApiRepo()),
-        builder: (controller) {
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              return Obx(() {
-                return ListTile(
-                  title: Text(controller.list[index].LAB_11_NAME.toString()),
-                  subtitle: Text(
-                    "${controller.list[index].LAB_11_EMAIL.toString()} | ${controller.list[index].LAB_11_ADDRESS.toString()}",
-                  ),
-                  trailing: SizedBox(
-                    width: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            controller.nameController.text = controller
-                                .list[index]
-                                .LAB_11_NAME
-                                .toString();
-                            controller.emailController.text = controller
-                                .list[index]
-                                .LAB_11_EMAIL
-                                .toString();
-                            controller.addressController.text = controller
-                                .list[index]
-                                .LAB_11_ADDRESS
-                                .toString();
-
-                            Lab11ApiModel editedUser = Lab11ApiModel(
-                              LAB_11_NAME: controller.nameController.text,
-                              LAB_11_EMAIL: controller.emailController.text,
-                              LAB_11_ADDRESS: controller.addressController.text,
-                            );
-
-                            controller.editData(
-                              index: index,
-                              model: editedUser,
-                            );
-                          },
-                          icon: Icon(Icons.edit, color: Colors.blue),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            controller.deleteData(index: index);
-                            print("delete done");
-                          },
-                          icon: Icon(Icons.delete, color: Colors.red),
-                        ),
-                      ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GetX<Lab11ApiController>(
+          init: Lab11ApiController(Lab11ApiRepo()),
+          builder: (controller) {
+            return Column(
+              children: [
+                TextFormField(
+                  controller: controller.searchController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                );
-              });
-            },
-            itemCount: controller.list.length,
-          );
-        },
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      print(controller.list[index].LAB_11_NAME.toString());
+
+                      return Obx(() {
+                        return ListTile(
+                          title: Text(
+                            controller.list[index].LAB_11_NAME.toString(),
+                          ),
+                          subtitle: Text(
+                            "${controller.list[index].LAB_11_EMAIL.toString()} | ${controller.list[index].LAB_11_ADDRESS.toString()}",
+                          ),
+                          trailing: SizedBox(
+                            width: 100,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    controller.nameController.text = controller
+                                        .list[index]
+                                        .LAB_11_NAME
+                                        .toString();
+                                    controller.emailController.text = controller
+                                        .list[index]
+                                        .LAB_11_EMAIL
+                                        .toString();
+                                    controller.addressController.text =
+                                        controller.list[index].LAB_11_ADDRESS
+                                            .toString();
+
+                                    Lab11ApiModel editedUser = Lab11ApiModel(
+                                      LAB_11_NAME:
+                                          controller.nameController.text,
+                                      LAB_11_EMAIL:
+                                          controller.emailController.text,
+                                      LAB_11_ADDRESS:
+                                          controller.addressController.text,
+                                    );
+
+                                    controller.editData(
+                                      index: index,
+                                      model: editedUser,
+                                    );
+                                  },
+                                  icon: Icon(Icons.edit, color: Colors.blue),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    controller.deleteData(index: index);
+                                    print("delete done");
+                                  },
+                                  icon: Icon(Icons.delete, color: Colors.red),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                    },
+                    itemCount: controller.list.length,
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

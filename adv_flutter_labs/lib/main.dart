@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'lab_05/app_route.dart';
 import 'lab_06/change_string_real_time.dart';
 import 'lab_07/crud_getx_view.dart';
+import 'lab_08/exception_snackbar.dart';
 import 'lab_10/lab_10_student_view.dart';
 import 'lab_11/lab_11_api_view.dart';
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: GetxView(),
+      // home: ExceptionSnackbar(),
       // home: GetxCustomView(),
       // getPages: AppRoute.route,
       // initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
