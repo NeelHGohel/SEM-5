@@ -8,6 +8,7 @@ import 'lab_07/crud_getx_view.dart';
 import 'lab_08/exception_snackbar.dart';
 import 'lab_10/lab_10_student_view.dart';
 import 'lab_11/lab_11_api_view.dart';
+import 'lab_15/permission_view_page.dart';
 
 void main() {
   Get.put(GetxNavigationController());
@@ -45,8 +46,9 @@ class MyApp extends StatelessWidget {
       // home: GetxCustomView(),
       // getPages: AppRoute.route,
       // initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
-      getPages: Lab11ApiRoutes.route,
-      initialRoute: LAB11APIVIEW,
+      // getPages: Lab11ApiRoutes.route,
+      // initialRoute: LAB11APIVIEW,
+      home: PermissionViewPage(),
     );
   }
 }
