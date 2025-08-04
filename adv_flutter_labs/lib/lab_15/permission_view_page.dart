@@ -27,6 +27,19 @@ class PermissionViewPage extends StatelessWidget {
             },
             trailing: Icon(Icons.chevron_right_rounded),
           ),
+          SizedBox(height: 10),
+          ListTile(
+            title: Text("Storage"),
+            leading: Icon(Icons.storage),
+            onTap: () {
+              controller.requestPermission(StorageRequest(), (result) {
+                if (result) {
+                  Get.to(UserAddEditPage());
+                }
+              });
+            },
+            trailing: Icon(Icons.chevron_right_rounded),
+          ),
         ],
       ),
     );

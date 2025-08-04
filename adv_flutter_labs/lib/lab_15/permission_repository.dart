@@ -30,3 +30,27 @@ class CameraRequest implements PermissionRepository {
     }
   }
 }
+
+class StorageRequest implements PermissionRepository {
+  @override
+  Future<void> requestPermission(Function result) async {
+    PermissionStatus status = await Permission.manageExternalStorage.request();
+    if (!status.isGranted) {
+      result(false);
+      Get.showSnackbar(
+        GetSnackBar(
+          title: "Storage Permission",
+          message: "User Denied Storage permission",
+        ),
+      );
+    } else {
+      result(true);
+      Get.showSnackbar(
+        GetSnackBar(
+          title: "Storage Permission",
+          message: "User allowed Storage permission",
+        ),
+      );
+    }
+  }
+}
