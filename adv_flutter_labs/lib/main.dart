@@ -9,9 +9,9 @@ import 'lab_08/exception_snackbar.dart';
 import 'lab_10/lab_10_student_view.dart';
 import 'lab_11/lab_11_api_view.dart';
 import 'lab_15/permission_view_page.dart';
+import 'lab_16/file_read_write_view.dart';
 
 void main() {
-  Get.put(GetxNavigationController());
   runApp(const MyApp());
 }
 
@@ -48,7 +48,8 @@ class MyApp extends StatelessWidget {
       // initialRoute: GETX_NAVIGATION_LIST_VIEW_PAGE,
       // getPages: Lab11ApiRoutes.route,
       // initialRoute: LAB11APIVIEW,
-      home: PermissionViewPage(),
+      // home: PermissionViewPage(),
+      home: FileReadWriteView(),
     );
   }
 }
