@@ -1,7 +1,9 @@
 import 'package:adv_flutter_labs/lab_11/lab_11_api_routes.dart';
 import 'package:adv_flutter_labs/utils/import_export.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
+import 'firebase_options.dart';
 import 'lab_05/app_route.dart';
 import 'lab_06/change_string_real_time.dart';
 import 'lab_07/crud_getx_view.dart';
@@ -11,7 +13,9 @@ import 'lab_11/lab_11_api_view.dart';
 import 'lab_15/permission_view_page.dart';
 import 'lab_16/file_read_write_view.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
