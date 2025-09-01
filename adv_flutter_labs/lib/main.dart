@@ -12,6 +12,9 @@ import 'lab_10/lab_10_student_view.dart';
 import 'lab_11/lab_11_api_view.dart';
 import 'lab_15/permission_view_page.dart';
 import 'lab_16/file_read_write_view.dart';
+import 'lab_17/screen_height_width.dart';
+import 'lab_17/text_color_by_width.dart';
+import 'lab_19/sign_in/sign_in_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
       // getPages: Lab11ApiRoutes.route,
       // initialRoute: LAB11APIVIEW,
       // home: PermissionViewPage(),
-      home: FileReadWriteView(),
+      home: TextColorByWidth(),
     );
   }
 }
