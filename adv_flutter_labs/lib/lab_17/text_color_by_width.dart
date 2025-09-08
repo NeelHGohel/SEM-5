@@ -6,7 +6,7 @@ class TextColorByWidth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-d
+
     final bool isWeb = screenWidth > 700;
     final String displayText = isWeb ? 'WEB' : 'MOBILE';
     final Color bgColor = isWeb ? Colors.blue : Colors.blue;
